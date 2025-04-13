@@ -27,11 +27,19 @@ function App() {
     );
   };
 
+  const onDelete = (targetId) => {
+    setTodo(
+      todos.filter((todo) => {
+        todo.id !== targetId; //삭제되어야 하는 id의 아이템들을 제외한 나머지만 filter(조건을 만족하는 요소만 남겨 새 배열 반환 )
+      })
+    );
+  };
+
   return (
     <div className="App">
       <Header />
       <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} />
+      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   );
 }
